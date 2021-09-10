@@ -1,0 +1,45 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3"><%= title%></h1>
+        <%- include ("./partials/messages") %>
+        <form method="POST" action="/events/edit/<%= event._id%>" id="eventform">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input name="title" type="text" class="form-control" value="<%= event.title%>"></input>
+            </div>
+            <div class="form-group">
+                <label for="details">Details</label>
+                <textarea class="form-control" name="details"><%= event.details %></textarea>
+            </div>
+            <div class="form-group">
+                <label for="recurrent">Recurrent</label>
+                <input name="recurrent" type="checkbox" id="recurrentValue" <% if(event.recurrent) { %> checked <% } %> ></input>
+            </div>
+            <div class="form-group">
+                <label for="recurrentType">Recurrence type</label>
+                <select name="recurrentType" id="recurrentType" form="eventform">
+                    <option <% if(event.recurrentType == '-') { %> selected <% } %> value="-">-</option>
+                    <option <% if(event.recurrentType == 'daily') { %> selected <% } %> value="daily">Daily</option>
+                    <option <% if(event.recurrentType == 'weekly') { %> selected <% } %> value="weekly">Weekly</option>
+                    <option <% if(event.recurrentType == 'monthly') { %> selected <% } %> value="monthly">Monthly</option>
+                    <option <% if(event.recurrentType == 'yearly') { %> selected <% } %> value="yearly">Yearly</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="startDate">Start date</label>
+                <input name="startDate" type="datetime-local" class="form-control" value="<%= event.startTime.toLocaleString()%>"></input>
+            </div>
+            <div class="form-group">
+                <label for="endDate">End date</label>
+                <input name="endDate" type="datetime-local" class="form-control" value="<%= event.endTime.toLocaleString()%>"></input>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="submit">
+                <a href="/dashboard" class="btn btn-success">Back</a>
+            </div>
+            <input hidden type="text" name="myName" value="<%= myName %>">
+        </form>
+        </div>
+    </div>
+</div>

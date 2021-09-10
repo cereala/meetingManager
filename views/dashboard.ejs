@@ -1,0 +1,40 @@
+<h1 class="mt-4">Dashboard</h1>
+<p class="lead mb-3">Welcome <%= name %></p>
+<%- include ("./partials/messages") %>
+<div>
+    <% if(events.length > 0) { %>
+        You have <%= events.length %> upcoming events.
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Details</th>
+                    <th>Start time</th>
+                    <th>End time</th>
+                    <th>Recurrence</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+        
+        <% events.forEach(event => { %> 
+        <tr>
+          <td><%= event.title %></td>
+          <td><%= event.details %></td>
+          <td><%= event.startTime.toLocaleString() %></td>
+          <td><% if(!event.endTime) {%> N/A <% } else { %> <%= event.endTime.toLocaleString() %>  <% } %></td>
+          <td><% if(event.recurrent){ %> <%= event.recurrentType%>  <% } else { %> <%= event.recurrent %> <% }%></td>
+          <td>
+            <a href="/events/edit/<%= event._id%>" class="btn btn-success">Edit</a>
+            <a href="/events/delete/<%= event._id%>" class="btn btn-danger delete-event" data-id="<%= event._id%>">X</a>
+          </td>
+        </tr> <% }) %>
+        </table>
+    <% } else { %> 
+        <div id="noEvents">No upcoming events</div>
+    <% } %> 
+</div>
+<a href="/events/add" class="btn btn-primary">Create a new meeting</a>
+<a href="/users/logout" class="btn btn-secondary">Logout</a>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript" src="/main.js"></script>

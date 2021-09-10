@@ -1,0 +1,38 @@
+{
+  "name": "schedulemanager",
+  "version": "1.0.0",
+  "description": "A tool to manage your calendar events",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app",
+    "test": "jest"
+  },
+  "author": "Sergiu Bodea",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.15.6",
+    "@testing-library/jest-dom": "^5.14.1",
+    "babel-jest": "^27.1.1",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "connect-flash-plus": "^0.2.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.17.2",
+    "express-validator": "^6.12.1",
+    "jest": "^27.1.1",
+    "jsdom": "^17.0.0",
+    "mongoose": "^6.0.5",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "ts-jest": "^27.0.5"
+  },
+  "type": "module"
+}
